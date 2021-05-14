@@ -1,0 +1,6 @@
+spacy>3.0.0
+coreferee
+eyecite
+stanza
+fastapi
+uvicorn
