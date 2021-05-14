@@ -11,6 +11,9 @@ class CoreNLPOpenIE:
     def __call__(self, text):
         with CoreNLPClient(annotators=self.annotators, be_quiet=False) as client:
             doc = client.annotate(text)
+            for sentence in ann.sentence:
+                for triple in sentence.openieTriple:
+                    print(triple)
         return doc
 
 

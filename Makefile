@@ -5,4 +5,4 @@ corenlp:
 	docker run -p 9000:9000 --name coreNLP --rm -i -t frnkenstien/corenlp
 
 server:
-	uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+	docker run -p 8000:8000 -v "./app:/bookworm/app" bookworm

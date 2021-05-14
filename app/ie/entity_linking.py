@@ -7,6 +7,8 @@ import spacy
 ENTITY_TYPES = ["human", "person", "company", "enterprise", "business", "geographic region",
                 "human settlement", "geographic entity", "territorial entity type", "organization"]
 
+
+# Use Wikifer to enrich the DBPedia-Splotlight Pipe
 class Wikifier:
     """
     A class to perform Entity Linking with the Wikidata Knowledge Graph.
@@ -77,7 +79,9 @@ class DBPedia:
     """
     def __init__(self):
         self.nlp = spacy.load('en_core_web_trf')
+        self.nlp.add_pipe('coreferee')
         self.nlp.add_pipe('dbpedia_spotlight', config={'language_code': 'en', 'confidence': 0.75 })
+
 
     def __call__(self, text):
         doc = self.nlp(text)

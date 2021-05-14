@@ -1,5 +1,6 @@
 spacy>3.0.0
 coreferee
+dframcy
 eyecite
 stanza
 fastapi
