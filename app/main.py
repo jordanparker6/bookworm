@@ -1,11 +1,13 @@
+import os
 import spacy
 from fastapi import FastAPI
 from app.entity_linking import Wikifier, DBPedia
 from app.relationship_extraction import extract_relations
 
+WIKIFIER_API_KEY: str = os.getenv("WIKIFIER_API_KEY", "xxxxx")
 
 nlp = spacy.load("en_core_web_sm")
-wiki = Wikifier("tearikqenfaaxnqpvksupwjjfpofvh")
+wiki = Wikifier()
 #dbpedia = DBPedia()
 
 text = r"""
