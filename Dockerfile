@@ -22,7 +22,7 @@ RUN pip3 install -r requirements.txt
 
 # install models
 RUN (echo "import stanza"; echo "stanza.install_corenlp()") | python
-RUN python -m spacy download "en_core_web_lg"
+RUN python -m spacy download "en_core_web_trf"
 
 # copy the content of the local src directory to the working directory
 COPY app/ ./app
