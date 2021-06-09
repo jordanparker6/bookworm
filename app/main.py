@@ -1,5 +1,6 @@
 import os
 import spacy
+from spacy import displacy
 from fastapi import FastAPI
 from app.entity_linking import Wikifier, DBPedia
 from app.relationship_extraction import extract_relations
@@ -21,13 +22,17 @@ Customers attempting to log in were greeted with a "maintenance" page'
 app = FastAPI()
 
 @app.get("/relationship_extraction")
-async def root():
+async def rel_extraction():
     return {"message": list(extract_relations(nlp(text.strip()))) }
 
 @app.get("/ner")
-async def root():
+async def ner():
     result = wiki(text.strip)
     return {"message": list(extract_relations(nlp(text.strip()))) }
+
+@app.get("/dep_tree")
+async def dep_tree():
+    return displacy.render(doc = nlp(text.strip()), style="dep")
 
 #print(wiki(text))
 #dbpedia(text)
